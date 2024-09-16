@@ -1,6 +1,6 @@
-package Train.Ticket.Train.Ticket.repository;
+package Train.Ticket.Train.Ticket.dao.repository;
 
-import Train.Ticket.Train.Ticket.model.Schedule;
+import Train.Ticket.Train.Ticket.dao.model.Schedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

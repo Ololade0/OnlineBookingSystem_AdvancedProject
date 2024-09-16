@@ -2,7 +2,7 @@ package Train.Ticket.Train.Ticket.controller;
 
 
 
-import Train.Ticket.Train.Ticket.model.Schedule;
+import Train.Ticket.Train.Ticket.dao.model.Schedule;
 import Train.Ticket.Train.Ticket.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

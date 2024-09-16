@@ -1,7 +1,7 @@
 package Train.Ticket.Train.Ticket.controller;
 
-import Train.Ticket.Train.Ticket.model.RoleStatus;
-import Train.Ticket.Train.Ticket.model.User;
+import Train.Ticket.Train.Ticket.dao.model.RoleStatus;
+import Train.Ticket.Train.Ticket.dao.model.User;
 import Train.Ticket.Train.Ticket.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

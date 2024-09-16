@@ -1,7 +1,7 @@
 package Train.Ticket.Train.Ticket.service;
 
-import Train.Ticket.Train.Ticket.model.Station;
-import Train.Ticket.Train.Ticket.repository.StationRepository;
+import Train.Ticket.Train.Ticket.dao.model.Station;
+import Train.Ticket.Train.Ticket.dao.repository.StationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

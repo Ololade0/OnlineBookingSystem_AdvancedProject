@@ -1,11 +1,9 @@
-package Train.Ticket.Train.Ticket.model;
+package Train.Ticket.Train.Ticket.dao.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Builder
@@ -25,7 +23,6 @@ public class User {
   private String email;
   private String password;
   private String phoneNumber;
-
   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   private Set<Role> roleSet = new HashSet<>();
 

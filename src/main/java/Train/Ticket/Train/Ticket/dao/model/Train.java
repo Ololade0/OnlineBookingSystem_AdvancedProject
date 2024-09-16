@@ -1,8 +1,5 @@
-package Train.Ticket.Train.Ticket.model;
+package Train.Ticket.Train.Ticket.dao.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,5 +1,5 @@
-package Train.Ticket.Train.Ticket.repository;
-import Train.Ticket.Train.Ticket.model.User;
+package Train.Ticket.Train.Ticket.dao.repository;
+import Train.Ticket.Train.Ticket.dao.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

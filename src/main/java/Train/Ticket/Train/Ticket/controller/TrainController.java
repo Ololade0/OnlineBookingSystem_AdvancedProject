@@ -1,16 +1,14 @@
 package Train.Ticket.Train.Ticket.controller;
 
 
-import Train.Ticket.Train.Ticket.model.Schedule;
-import Train.Ticket.Train.Ticket.model.Train;
+import Train.Ticket.Train.Ticket.dao.model.Schedule;
+import Train.Ticket.Train.Ticket.dao.model.Train;
 import Train.Ticket.Train.Ticket.service.TrainService;
-import Train.Ticket.Train.Ticket.service.response.FindTrainScheduleResponse;
+import Train.Ticket.Train.Ticket.dto.response.FindTrainScheduleResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 //@RequiredArgsConstructor

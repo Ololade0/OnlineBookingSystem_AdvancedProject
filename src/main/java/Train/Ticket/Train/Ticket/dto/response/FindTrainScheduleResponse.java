@@ -1,7 +1,7 @@
-package Train.Ticket.Train.Ticket.service.response;
+package Train.Ticket.Train.Ticket.dto.response;
 
-import Train.Ticket.Train.Ticket.model.Schedule;
-import Train.Ticket.Train.Ticket.model.Train;
+import Train.Ticket.Train.Ticket.dao.model.Schedule;
+import Train.Ticket.Train.Ticket.dao.model.Train;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

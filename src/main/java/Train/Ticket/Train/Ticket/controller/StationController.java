@@ -1,7 +1,6 @@
 package Train.Ticket.Train.Ticket.controller;
 
-import Train.Ticket.Train.Ticket.model.Station;
-import Train.Ticket.Train.Ticket.model.Train;
+import Train.Ticket.Train.Ticket.dao.model.Station;
 import Train.Ticket.Train.Ticket.service.StationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

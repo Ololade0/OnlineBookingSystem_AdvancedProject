@@ -1,9 +1,7 @@
-package Train.Ticket.Train.Ticket.model;
+package Train.Ticket.Train.Ticket.dao.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Builder
 @Setter

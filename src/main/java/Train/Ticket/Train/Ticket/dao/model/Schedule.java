@@ -1,4 +1,4 @@
-package Train.Ticket.Train.Ticket.model;
+package Train.Ticket.Train.Ticket.dao.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -23,6 +23,8 @@ public class Schedule {
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
     private String duration;
+    private LocalDateTime updatedAt;
+    private LocalDateTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "train_id")

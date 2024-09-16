@@ -1,4 +1,4 @@
-package Train.Ticket.Train.Ticket.model;
+package Train.Ticket.Train.Ticket.dao.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

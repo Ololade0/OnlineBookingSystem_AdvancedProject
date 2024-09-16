@@ -1,11 +1,9 @@
 package Train.Ticket.Train.Ticket.service;
 
 
-import Train.Ticket.Train.Ticket.model.Schedule;
-import Train.Ticket.Train.Ticket.model.Train;
-import Train.Ticket.Train.Ticket.service.response.FindTrainScheduleResponse;
-
-import java.util.Optional;
+import Train.Ticket.Train.Ticket.dao.model.Schedule;
+import Train.Ticket.Train.Ticket.dao.model.Train;
+import Train.Ticket.Train.Ticket.dto.response.FindTrainScheduleResponse;
 
 public interface TrainService {
     Train saveTrain(Train train);
@@ -13,5 +11,8 @@ public interface TrainService {
    FindTrainScheduleResponse findCreatedSchedule(Long trainId, Long scheduleId);
 
 
+    Train getTrain(Long trainId);
+
+   String updateTrain(Train updateTrain, Long trainId);
 }
 
