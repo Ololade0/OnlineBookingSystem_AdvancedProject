@@ -17,6 +17,7 @@ public class ScheduleServiceImpl implements ScheduleService{
 
     @Override
     public Schedule createSchedule(Schedule scheduleRequest) {
+
         Schedule schedule = Schedule.builder()
                 .createdAt(LocalDateTime.now())
                 .arrivalStation(scheduleRequest.getArrivalStation())

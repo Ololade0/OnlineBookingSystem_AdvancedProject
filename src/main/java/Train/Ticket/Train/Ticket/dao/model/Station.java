@@ -6,6 +6,7 @@ import lombok.*;
 @Builder
 @Setter
 @Getter
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "stations")

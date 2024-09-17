@@ -22,10 +22,17 @@ public class Train {
     private List<Schedule> scheduleList = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "trainclass", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "trainclass", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<TrainClass> trainClasses;
 
-
+    public void addTrainClass(TrainClass trainClass) {
+        trainClasses.add(trainClass);
+        trainClass.setTrainclass(this);
+    }
+    public void removeTrainClass(TrainClass trainClass) {
+        trainClasses.remove(trainClass);
+        trainClass.setTrainclass(null);
+    }
 }
 
 
