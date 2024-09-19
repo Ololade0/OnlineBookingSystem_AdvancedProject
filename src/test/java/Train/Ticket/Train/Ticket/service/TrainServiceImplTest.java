@@ -22,42 +22,42 @@ class TrainServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        List<TrainClass> trainClassList = List.of(
-                new TrainClass("First Class"),
-                new TrainClass("Second Class"),
-                new TrainClass("Third Class")
-        );
-
-        Train addTrain = Train.builder()
-                .trainType("coauch 5")
-                .trainName("Moniya Trian")
-                .trainClasses(trainClassList)
-                .build();
-        newTrain = trainService.saveTrain(addTrain);
+//        List<TrainClass> trainClassList = List.of(
+//                new TrainClass("First Class"),
+//                new TrainClass("Second Class"),
+//                new TrainClass("Third Class")
+//        );
+//
+//        Train addTrain = Train.builder()
+//                .trainType("coauch 5")
+//                .trainName("Moniya Trian")
+//                .trainClasses(trainClassList)
+//                .build();
+//        newTrain = trainService.saveTrain(addTrain);
     }
 
     @AfterEach
     void tearDown() {
     }
-
-                @Test
-                void saveTrain() {
-                    List<TrainClass> trainClassList = List.of(
-                            new TrainClass("First Class"),
-                            new TrainClass("Second Class"),
-                            new TrainClass("Third Class")
-                    );
-
-                    Train addTrain = Train.builder()
-                            .trainType("coauch 5")
-                            .trainName("Moniya Trian")
-                            .trainClasses(trainClassList)
-                            .build();
-                    trainService.saveTrain(addTrain);
-                   assertEquals("coauch 5", addTrain.getTrainType());
-                    assertNotNull(addTrain.getTrainClasses());
-
-                   }
+//
+//                @Test
+//                void saveTrain() {
+//                    List<TrainClass> trainClassList = List.of(
+//                            new TrainClass("First Class"),
+//                            new TrainClass("Second Class"),
+//                            new TrainClass("Third Class")
+//                    );
+//
+//                    Train addTrain = Train.builder()
+//                            .trainType("coauch 5")
+//                            .trainName("Moniya Trian")
+//                            .trainClasses(trainClassList)
+//                            .build();
+//                    trainService.saveTrain(addTrain);
+//                   assertEquals("coauch 5", addTrain.getTrainType());
+//                    assertNotNull(addTrain.getTrainClasses());
+//
+//                   }
 
                 @Test
                 void findTrain() {

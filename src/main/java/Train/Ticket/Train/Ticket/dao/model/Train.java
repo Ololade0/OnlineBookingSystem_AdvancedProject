@@ -22,8 +22,8 @@ public class Train {
     private List<Schedule> scheduleList = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "trainclass", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<TrainClass> trainClasses;
+    @OneToMany(mappedBy = "trainclass", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<TrainClass> trainClasses;
 
     public void addTrainClass(TrainClass trainClass) {
         trainClasses.add(trainClass);

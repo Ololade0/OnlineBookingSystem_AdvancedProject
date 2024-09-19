@@ -13,6 +13,8 @@ public interface TrainService {
 
     Train getTrain(Long trainId);
 
-   String updateTrain(Train updateTrain, Long trainId);
+//    Train saveTrainWithClasses(Train train);
+
+//   String updateTrain(Train updateTrain, Long trainId);
 }
 

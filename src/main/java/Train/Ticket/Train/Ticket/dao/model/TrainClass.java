@@ -21,11 +21,11 @@ public class TrainClass {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String className;
-    private double price;
+     private double price;
     private int availableSeat;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "train_id", nullable = false)
+    @JoinColumn(name = "train_id")
     @JsonIgnore
     private Train trainclass;
 

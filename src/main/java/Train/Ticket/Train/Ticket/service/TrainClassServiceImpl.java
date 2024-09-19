@@ -1,15 +1,13 @@
 package Train.Ticket.Train.Ticket.service;
 
-import Train.Ticket.Train.Ticket.dao.model.Seat;
 import Train.Ticket.Train.Ticket.dao.model.TrainClass;
 import Train.Ticket.Train.Ticket.dao.repository.TrainClassRepository;
-import Train.Ticket.Train.Ticket.exception.TrainCannotBeFoundException;
+import Train.Ticket.Train.Ticket.dto.request.AddTrainClassRequest;
 import Train.Ticket.Train.Ticket.exception.TrainClassCannotBeFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class TrainClassServiceImpl  implements TrainClassService{
@@ -25,15 +23,38 @@ public class TrainClassServiceImpl  implements TrainClassService{
         throw new TrainClassCannotBeFoundException("Train Class cannot be found");
     }
 
-    @Override
-    public TrainClass savenewTrainClass(TrainClass trainClass) {
-        List<Seat> seatList = List.of();
+//public TrainClass saveNewTrainClass(AddTrainClassRequest addTrainClassRequest){
+//
+//
+//        TrainClass newTrainClass = TrainClass.builder()
+//                .className(addTrainClassRequest.getClassName())
+//                .price(addTrainClassRequest.getPrice())
+//                .availableSeat(addTrainClassRequest.getAvailableSeat())
+//                .seats(new ArrayList<>())
+//                .build();
+//        return trainClassRepository.save(newTrainClass);
+//    }
+public Map<String, TrainClass> saveNewTrainClasses(Map<String, Map<String, Object>> trainClassRequest) {
+    Map<String, TrainClass> savedTrainClasses = new HashMap<>();
+
+    for (Map.Entry<String, Map<String, Object>> entry : trainClassRequest.entrySet()) {
+        String className = entry.getKey();
+        Map<String, Object> details = entry.getValue();
+        Double price = (Double) details.get("price");
+        Integer availableSeat = (Integer) details.get("availableSeat");
+
         TrainClass newTrainClass = TrainClass.builder()
-                .className(trainClass.getClassName())
-                .price(trainClass.getPrice())
-                .availableSeat(trainClass.getAvailableSeat())
-                .seats(seatList)
+                .className(className)
+                .price(price)
+                .availableSeat(availableSeat)
+                .seats(new ArrayList<>())
                 .build();
-                return trainClassRepository.save(newTrainClass);
+
+        savedTrainClasses.put(className, trainClassRepository.save(newTrainClass));
     }
+
+    return savedTrainClasses;
 }
+}
+
+
