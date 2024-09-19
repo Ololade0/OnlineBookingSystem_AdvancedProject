@@ -25,12 +25,9 @@ public class TrainServiceImpl implements  TrainService {
             throw new IllegalArgumentException("Train cannot be null");
         }
         if (train.getTrainClasses() == null) {
-            train.setTrainClasses(new HashSet<>());
-        }
+            train.setTrainClasses(new HashSet<>());        }
         int totalSeat = 0;
-
         List<TrainClass> trainClassesCopy = new ArrayList<>(train.getTrainClasses());
-
         for (TrainClass trainClass : trainClassesCopy) {
             if (trainClass == null) {
                 throw new IllegalArgumentException("TrainClass cannot be null");
@@ -62,7 +59,7 @@ public class TrainServiceImpl implements  TrainService {
         Optional<Schedule> foundSchedule = scheduleService.findSchedule(scheduleId);
         if (foundTrain.isPresent()) {
             if (foundSchedule.isPresent()) {
-                return new FindTrainScheduleResponse(foundTrain.get(), foundSchedule.get());
+                return new FindTrainScheduleResponse(foundTrain.get());
             }
             throw new RuntimeException("Schedule cannot be found");
 

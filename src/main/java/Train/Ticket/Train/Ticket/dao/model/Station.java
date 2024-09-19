@@ -17,9 +17,9 @@ public class Station {
 
         private String stationName;
 
-        @ManyToOne
-        @JoinColumn(name = "schedule_id")
-        private Schedule schedule;
+//        @ManyToOne
+//        @JoinColumn(name = "schedule_id")
+//        private Schedule schedule;
 
         // Getters and setters
 }

@@ -13,5 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class FindTrainScheduleResponse {
     private Train train;
-    private Schedule schedule;
+
+    public FindTrainScheduleResponse(Train train) {
+        this.train = train;
+    }
 }

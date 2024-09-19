@@ -23,17 +23,6 @@ public class TrainClassServiceImpl  implements TrainClassService{
         throw new TrainClassCannotBeFoundException("Train Class cannot be found");
     }
 
-//public TrainClass saveNewTrainClass(AddTrainClassRequest addTrainClassRequest){
-//
-//
-//        TrainClass newTrainClass = TrainClass.builder()
-//                .className(addTrainClassRequest.getClassName())
-//                .price(addTrainClassRequest.getPrice())
-//                .availableSeat(addTrainClassRequest.getAvailableSeat())
-//                .seats(new ArrayList<>())
-//                .build();
-//        return trainClassRepository.save(newTrainClass);
-//    }
 public Map<String, TrainClass> saveNewTrainClasses(Map<String, Map<String, Object>> trainClassRequest) {
     Map<String, TrainClass> savedTrainClasses = new HashMap<>();
 

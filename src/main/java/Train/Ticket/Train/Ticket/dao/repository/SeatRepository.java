@@ -2,7 +2,6 @@ package Train.Ticket.Train.Ticket.dao.repository;
 
 import Train.Ticket.Train.Ticket.dao.model.Seat;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 

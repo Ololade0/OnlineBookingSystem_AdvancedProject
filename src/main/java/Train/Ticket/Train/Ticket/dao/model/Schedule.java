@@ -30,8 +30,8 @@ public class Schedule {
     @JoinColumn(name = "train_id")
     @JsonIgnore
     private Train trainSchedule;
-
-    @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Station> stationList = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Station> stationList = new ArrayList<>();
 
 }

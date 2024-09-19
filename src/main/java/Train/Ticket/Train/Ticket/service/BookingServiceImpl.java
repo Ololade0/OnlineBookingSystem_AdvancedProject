@@ -36,8 +36,8 @@ public class BookingServiceImpl implements BookingService {
       TrainClass foundTrainClass = trainClassService.findById(bookingRequest.getTrainClassId())
                 .orElseThrow(() -> new IllegalArgumentException("Train class not found for ID: " + bookingRequest.getTrainClassId()));
 
-        Schedule foundSchedule = scheduleService.findSchedule(bookingRequest.getScheduleId())
-                .orElseThrow(() -> new IllegalArgumentException("Schedule not found for ID: " + bookingRequest.getScheduleId()));
+//        Schedule foundSchedule = scheduleService.findSchedule(bookingRequest.getScheduleId())
+//                .orElseThrow(() -> new IllegalArgumentException("Schedule not found for ID: " + bookingRequest.getScheduleId()));
         List<Seat> availableSeats = seatRepository.findAvailableSeatsByTrainClassId(foundTrainClass.getId());
         List<Integer> requestedSeatNumbers = bookingRequest.getSelectedSeatNumber();
         List<Seat> selectedSeats = new ArrayList<>();
@@ -60,7 +60,7 @@ public class BookingServiceImpl implements BookingService {
                 .totalPrice(totalPriceOfSeatBooked(foundTrainClass.getPrice(), requestedSeatNumbers))
                 .bookingStatus(BookingStatus.CONFIRMED)
                 .bookingDate(LocalDateTime.now())
-                .schedule(foundSchedule)
+//                .schedule(foundSchedule)
                 .trainClass(foundTrainClass)
                 .build();
 
