@@ -24,11 +24,11 @@ public class TrainClassController {
     private TrainClassService trainClassService;
 
 
-
-    @PostMapping("/add")
-    public Map<String, TrainClass> addNewTrainClasses(@RequestBody Map<String, Map<String, Object>> trainClassRequest) {
-        return trainClassService.saveNewTrainClasses(trainClassRequest);
-    }
+//
+//    @PostMapping("/add")
+//    public Map<String, TrainClass> addNewTrainClasses(@RequestBody Map<String, Map<String, Object>> trainClassRequest) {
+//        return trainClassService.saveNewTrainClasses(trainClassRequest);
+//    }
 }
 
 

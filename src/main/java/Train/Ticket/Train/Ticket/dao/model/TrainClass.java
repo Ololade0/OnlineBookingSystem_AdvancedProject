@@ -1,6 +1,7 @@
 package Train.Ticket.Train.Ticket.dao.model;
 
 import Train.Ticket.Train.Ticket.exception.NoSeatAvailableException;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,12 +23,13 @@ public class TrainClass {
     private Long id;
     private String className;
      private double price;
-    private int availableSeat;
+    private int startSeatNumber;
+    private int endSeatNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "train_id")
     @JsonIgnore
-    private Train trainclass;
+    private Train train;
 
     @OneToMany(mappedBy = "trainClass", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Seat> seats = new ArrayList<>();
@@ -38,6 +40,6 @@ public class TrainClass {
 
 
     public void setTrain(Train train) {
-        this.trainclass = train;
+        this.train = train;
     }
 }

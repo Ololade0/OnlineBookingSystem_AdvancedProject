@@ -38,6 +38,13 @@ public class TrainController {
                 return ResponseEntity.status(HttpStatus.CREATED).body(savedTrain);
             }
 
+
+    @PostMapping("/{trainId}")
+    public ResponseEntity<Train> findTrain(@PathVariable Long trainId) {
+        Train savedTrain = trainService.getTrain(trainId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedTrain);
+    }
+
             @GetMapping("/{trainId}/{scheduleId}/findschedule")
             public ResponseEntity<?> FindTrain(@PathVariable Long trainId, @PathVariable Long scheduleId) {
                 FindTrainScheduleResponse foundTrain = trainService.findCreatedSchedule(trainId, scheduleId);

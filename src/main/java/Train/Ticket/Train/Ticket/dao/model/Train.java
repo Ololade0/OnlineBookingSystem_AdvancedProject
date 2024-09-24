@@ -1,5 +1,8 @@
 package Train.Ticket.Train.Ticket.dao.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,6 +14,7 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "trains")
+
 public class Train {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,17 +25,17 @@ public class Train {
     @OneToMany(mappedBy = "trainSchedule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Schedule> scheduleList = new ArrayList<>();
 
-
-    @OneToMany(mappedBy = "trainclass", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<TrainClass> trainClasses;
+    @OneToMany(mappedBy = "train", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<TrainClass> trainClasses = new HashSet<>();
 
     public void addTrainClass(TrainClass trainClass) {
         trainClasses.add(trainClass);
-        trainClass.setTrainclass(this);
+        trainClass.setTrain(this);
     }
     public void removeTrainClass(TrainClass trainClass) {
         trainClasses.remove(trainClass);
-        trainClass.setTrainclass(null);
+        trainClass.setTrain(null);
     }
 }
 

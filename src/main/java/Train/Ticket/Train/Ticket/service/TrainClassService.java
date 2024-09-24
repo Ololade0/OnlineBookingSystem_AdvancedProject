@@ -9,6 +9,5 @@ import java.util.Optional;
 public interface TrainClassService {
     Optional<TrainClass> findById(Long trainClassId);
 
-    Map<String, TrainClass> saveNewTrainClasses(Map<String, Map<String, Object>> trainClassRequest);
 
 }

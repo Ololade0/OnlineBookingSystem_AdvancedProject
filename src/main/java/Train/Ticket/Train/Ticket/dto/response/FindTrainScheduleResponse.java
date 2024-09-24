@@ -14,7 +14,4 @@ import lombok.Setter;
 public class FindTrainScheduleResponse {
     private Train train;
 
-    public FindTrainScheduleResponse(Train train) {
-        this.train = train;
-    }
 }
