@@ -7,8 +7,10 @@ import Train.Ticket.Train.Ticket.dto.response.FindTrainScheduleResponse;
 import Train.Ticket.Train.Ticket.exception.TrainCannotBeFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 ;
 
@@ -20,39 +22,53 @@ public class TrainServiceImpl implements  TrainService {
 
 
 
-    public Train saveTrain(Train train) {
-        if (train == null) {
-            throw new IllegalArgumentException("Train cannot be null");
-        }
-        if (train.getTrainClasses() == null) {
-            train.setTrainClasses(new HashSet<>());
-        }
-        int totalSeat = 0;
-        List<TrainClass> trainClassesCopy = new ArrayList<>(train.getTrainClasses());
-        for (TrainClass trainClass : trainClassesCopy) {
-            if (trainClass == null) {
-                throw new IllegalArgumentException("TrainClass cannot be null");
-            }
-            if (trainClass.getTrain() != null && !trainClass.getTrain().equals(train)) {
-                throw new IllegalStateException("TrainClass is already associated with another Train");
-            }
+    @Transactional
+    public TrainResponse addTrain(TrainRequest trainRequest) {
+        // First, save the Train
+        Train trainToSave = Train.builder()
+                .trainType(trainRequest.getTrain().getTrainType())
+                .trainName(trainRequest.getTrain().getTrainName())
+                .build();
 
-            // Generate and set seats based on class type
-            int startSeatNumber = trainClass.getStartSeatNumber();
-            int endSeatNumber = trainClass.getEndSeatNumber();
-            List<Seat> seats = generateSeatsForTrainClass(trainClass, startSeatNumber, endSeatNumber);
-            trainClass.setSeats(seats);
+        Train savedTrain = trainRepository.save(trainToSave);  // Save train first
 
-            train.addTrainClass(trainClass);
-            totalSeat += seats.size();
+        // Now, save the TrainClasses with reference to the saved Train
+        List<TrainClass> trainClasses = new ArrayList<>();
+        for (TrainClassRequest request : trainRequest.getTrainClassRequests()) {
+            TrainClass trainClass = new TrainClass();
+            trainClass.setClassName(request.getClassName());
+            trainClass.setPrice(request.getPrice());
+            trainClass.setTrain(savedTrain);  // Associate train with the train class
+            trainClasses.add(trainClass);
         }
 
-        train.setTrainTotalSeat(totalSeat);
-        return trainRepository.save(train);
+        List<TrainClass> savedTrainClasses = trainClassRepository.saveAll(trainClasses);
+
+        // Generate seats for each TrainClass
+        for (int i = 0; i < savedTrainClasses.size(); i++) {
+            TrainClass trainClass = savedTrainClasses.get(i);
+            TrainClassRequest request = trainRequest.getTrainClassRequests().get(i);
+            seatService.generateSeatsForTrainClass(trainClass, request.getStartSeatNumber(), request.getEndSeatNumber());
+        }
+
+        // Prepare the response
+        List<TrainClassResponse> trainClassResponses = savedTrainClasses.stream()
+                .map(trainClass -> {
+                    List<SeatResponse> seatResponses = trainClass.getSeats().stream()
+                            .map(seat -> new SeatResponse(seat.getSeatId(), seat.getSeatNumber(), seat.getSeatStatus().name()))
+                            .collect(Collectors.toList());
+                    return new TrainClassResponse(trainClass.getId(), trainClass.getClassName(), trainClass.getPrice(), seatResponses);
+                })
+                .collect(Collectors.toList());
+
+        // Return the train with its classes and generated seats
+        return new TrainResponse(savedTrain.getTrainId(), savedTrain.getTrainType(), savedTrain.getTrainName(), trainClassResponses);
     }
 
+}
 
-    ;
+
+;
     public List<Seat> generateSeatsForTrainClass(TrainClass trainClass, int startSeatNumber, int endSeatNumber) {
         List<Seat> seats = new ArrayList<>();
         for (int i = startSeatNumber; i <= endSeatNumber; i++) {
